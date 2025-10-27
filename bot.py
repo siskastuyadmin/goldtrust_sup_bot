@@ -285,8 +285,17 @@ def set_language(message):
         go_back(message)
 
 
-# === ЗАПУСК ===
+import os
+from flask import Flask
+import threading
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot is running!"
+
 if __name__ == "__main__":
-    print("🤖 GoldTrust Support Bot — FINAL PRODUCTION VERSION")
-    print("🟢 Бот працює стабільно!")
-    bot.infinity_polling()
+    threading.Thread(target=lambda: bot.infinity_polling(skip_pending=True)).start()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
