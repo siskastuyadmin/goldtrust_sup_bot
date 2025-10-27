@@ -193,7 +193,7 @@ def handle_custom_problem(message):
     user_state[user_id] = "verify_custom"
 
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add("✅ Так / Да", "❌ Ні / Нет")
+    markup.add("✅ Да", "❌ Нет")
     bot.send_message(message.chat.id, get_text(user_id, "verify_data", username=username, problem=problem), reply_markup=markup)
     user_data[user_id]["custom_problem"] = problem
 
