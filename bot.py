@@ -106,7 +106,7 @@ def menu_profile(message):
     username = message.from_user.username or "—"
     bot.send_message(
         message.chat.id,
-        get_text(user_id, "profile", username=username, user_id=user_id)
+        get_text(user_id, "profile", username=username, user_id_str=user_id)
     )
 
 
